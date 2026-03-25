@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجلة تدبر — الإحصاءات الببليومترية | عشر سنوات من العطاء القرآني</title>
+<meta name="description" content="إحصاءات ببليومترية تفاعلية لمجلة تدبر عبر عشرين عدداً من 2016 إلى 2025">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #1C1207;
+  --bark:     #3A220A;
+  --amber:    #B8852A;
+  --gold:     #D4A843;
+  --gilt:     #EDD07A;
+  --parchment:#FBF3DF;
+  --vellum:   #F5E9C8;
+  --sand:     #E8D5A0;
+  --moss:     #4E6645;
+  --azure:    #2E5E7A;
+  --brick:    #8B3A2A;
+  --white:    #FFFDF8;
+  --shadow:   rgba(28,18,7,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Naskh Arabic',serif;
+  background:var(--parchment);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ─── GEOMETRIC BACKGROUND PATTERN ─── */
+.geo-bg{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 34px,rgba(180,130,40,.04) 34px,rgba(180,130,40,.04) 35px),
+    repeating-linear-gradient(-45deg,transparent,transparent 34px,rgba(180,130,40,.04) 34px,rgba(180,130,40,.04) 35px);
+}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  background:linear-gradient(170deg, var(--bark) 0%, var(--ink) 55%, #0D0804 100%);
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 60px;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z' fill='none' stroke='%23D4A843' stroke-opacity='0.07' stroke-width='1'/%3E%3C/svg%3E");
+}
+/* Arabic ornament corners */
+.corner{position:absolute;font-size:3rem;color:var(--gold);opacity:.12;line-height:1;}
+.corner.tl{top:20px;right:24px;}
+.corner.br{bottom:20px;left:24px;}
+
+.hero-emblem{
+  width:100px;height:100px;
+  background:conic-gradient(from 45deg, var(--amber), var(--gilt), var(--amber));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 28px;
+  box-shadow:0 0 0 4px rgba(212,168,67,.15), 0 12px 50px rgba(212,168,67,.35);
+  animation:breathe 4s ease-in-out infinite;
+}
+.hero-emblem svg{width:54px;height:54px;}
+@keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 0 0 4px rgba(212,168,67,.15),0 12px 50px rgba(212,168,67,.35);}50%{transform:scale(1.04);box-shadow:0 0 0 10px rgba(212,168,67,.08),0 20px 70px rgba(212,168,67,.5);}}
+
+.hero-title{
+  font-family:'Amiri',serif;
+  font-size:clamp(2rem,5.5vw,3.8rem);
+  color:var(--gilt);
+  line-height:1.25;margin-bottom:10px;
+}
+.hero-title span{color:var(--white);}
+.hero-tagline{
+  font-size:clamp(.85rem,2vw,1.05rem);
+  color:rgba(255,255,255,.55);
+  max-width:520px;line-height:1.9;margin-bottom:8px;
+}
+.hero-divider{
+  width:160px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:18px auto 28px;
+}
+
+/* Hero counter strip */
+.hero-counters{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:0;
+  border:1px solid rgba(212,168,67,.2);border-radius:12px;
+  overflow:hidden;background:rgba(255,255,255,.04);backdrop-filter:blur(8px);
+}
+.hc{
+  padding:22px 32px;border-left:1px solid rgba(212,168,67,.15);
+  text-align:center;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.hc:last-child{border-left:none;}
+.hc.on{opacity:1;transform:translateY(0);}
+.hc-num{
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
+  color:var(--gold);line-height:1;display:block;
+  font-variant-numeric:tabular-nums;
+}
+.hc-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:5px;display:block;}
+
+/* ─── SECTION WRAPPER ─── */
+.wrap{max-width:1080px;margin:0 auto;padding:72px 24px;}
+.sec-head{text-align:center;margin-bottom:52px;}
+.sec-head h2{font-family:'Amiri',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);color:var(--bark);margin-bottom:6px;}
+.sec-head h2 em{font-style:normal;color:var(--amber);}
+.sec-head p{font-size:.9rem;color:#5C4020;margin-top:4px;}
+.ornament-line{
+  width:100px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:12px auto 0;border-radius:1px;
+}
+
+/* ─── STAT CARDS ─── */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+}
+.stat-card{
+  background:var(--white);
+  border:1px solid var(--sand);
+  border-radius:14px;padding:26px 20px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  transition:transform .3s, box-shadow .3s, border-color .3s;
+  opacity:0;transform:translateY(24px);
+}
+.stat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--amber),var(--gilt));
+}
+.stat-card:hover{transform:translateY(-5px)!important;box-shadow:0 16px 48px var(--shadow);border-color:var(--gold);}
+.stat-card.on{opacity:1;transform:translateY(0);}
+.sc-icon{
+  width:46px;height:46px;border-radius:10px;
+  background:linear-gradient(135deg,var(--vellum),var(--sand));
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+}
+.sc-icon svg{width:24px;height:24px;stroke:var(--amber);fill:none;stroke-width:1.8;}
+.sc-num{
+  font-size:2.4rem;font-weight:700;color:var(--bark);
+  display:block;line-height:1;margin-bottom:6px;
+}
+.sc-label{font-size:.82rem;color:var(--amber);font-weight:700;margin-bottom:4px;}
+.sc-desc{font-size:.74rem;color:#7A5830;line-height:1.6;}
+
+/* ─── PER-ISSUE TABLE ─── */
+.issues-section{background:var(--white);padding:72px 0;}
+.issues-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:12px;margin-top:0;
+}
+.issue-tile{
+  background:var(--parchment);
+  border:1px solid var(--sand);
+  border-radius:12px;padding:18px 14px;text-align:center;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:all .3s ease;
+  opacity:0;transform:scale(.95);
+}
+.issue-tile.on{opacity:1;transform:scale(1);}
+.issue-tile:hover{background:var(--white);border-color:var(--gold);transform:scale(1.03)!important;box-shadow:0 8px 28px var(--shadow);}
+.issue-tile.active{
+  background:linear-gradient(135deg,var(--bark),var(--amber));
+  border-color:transparent;color:white;
+}
+.it-num{
+  font-family:'Amiri',serif;font-size:1.3rem;color:var(--amber);
+  display:block;margin-bottom:4px;font-weight:700;
+}
+.issue-tile.active .it-num{color:var(--gilt);}
+.it-label{font-size:.78rem;color:var(--bark);}
+.issue-tile.active .it-label{color:rgba(255,255,255,.8);}
+.it-count{
+  font-size:1.6rem;font-weight:700;color:var(--ink);
+  display:block;margin-top:6px;
+}
+.issue-tile.active .it-count{color:white;}
+.it-year{font-size:.65rem;color:#9A7040;margin-top:2px;display:block;}
+.issue-tile.active .it-year{color:rgba(255,255,255,.6);}
+
+/* Issue detail panel */
+.issue-detail{
+  background:linear-gradient(135deg,var(--bark) 0%, #2A1606 100%);
+  border-radius:16px;padding:32px 28px;margin-top:24px;
+  display:none;color:white;
+}
+.issue-detail.show{display:block;animation:fadeSlide .4s ease;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+.id-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px;}
+.id-title{font-family:'Amiri',serif;font-size:1.5rem;color:var(--gilt);}
+.id-date{font-size:.8rem;color:rgba(255,255,255,.5);}
+.id-stats{display:flex;flex-wrap:wrap;gap:16px;}
+.id-stat{background:rgba(255,255,255,.07);border-radius:10px;padding:14px 20px;text-align:center;flex:1;min-width:100px;}
+.id-stat strong{display:block;font-size:1.6rem;color:var(--gold);}
+.id-stat span{font-size:.72rem;color:rgba(255,255,255,.55);}
+
+/* ─── SVG CHARTS ─── */
+.chart-section{background:var(--vellum);}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+@media(max-width:680px){.charts-row{grid-template-columns:1fr;}}
+.chart-box{background:var(--white);border:1px solid var(--sand);border-radius:14px;padding:24px 20px;}
+.chart-title{font-size:.9rem;font-weight:700;color:var(--bark);margin-bottom:18px;text-align:center;}
+
+/* Bar chart */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;direction:rtl;}
+.bar-name{width:130px;font-size:.75rem;color:var(--bark);text-align:right;flex-shrink:0;}
+.bar-track{flex:1;height:22px;background:var(--vellum);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--gilt));border-radius:4px;width:0;transition:width 1.4s cubic-bezier(.34,1.2,.64,1);}
+.bar-val{width:32px;font-size:.72rem;font-weight:700;color:var(--amber);text-align:left;flex-shrink:0;}
+
+/* Donut */
+.donut-wrap{position:relative;width:180px;height:180px;margin:0 auto 20px;}
+.donut-wrap svg{transform:rotate(-90deg);}
+.donut-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;pointer-events:none;
+}
+.donut-center strong{font-size:1.8rem;font-weight:700;color:var(--bark);line-height:1;}
+.donut-center small{font-size:.65rem;color:var(--amber);}
+.legend-list{display:flex;flex-direction:column;gap:8px;}
+.legend-row{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--bark);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+/* ─── TIMELINE ─── */
+.timeline-section{background:linear-gradient(175deg,var(--ink) 0%,var(--bark) 100%);padding:72px 0;}
+.timeline-section .sec-head h2{color:var(--gilt);}
+.timeline-section .sec-head p{color:rgba(255,255,255,.5);}
+.tl-track{position:relative;max-width:860px;margin:0 auto;padding:0 24px;}
+.tl-track::after{
+  content:'';position:absolute;
+  right:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent,var(--amber),transparent);
+}
+.tl-row{display:flex;justify-content:flex-end;margin-bottom:30px;position:relative;}
+.tl-row.left{justify-content:flex-start;}
+.tl-card{
+  width:44%;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,67,.2);
+  border-radius:12px;padding:16px 18px;backdrop-filter:blur(4px);
+  opacity:0;transform:translateX(30px);
+  transition:opacity .5s,transform .5s,border-color .3s,background .3s;
+  cursor:default;
+}
+.tl-row.left .tl-card{transform:translateX(-30px);}
+.tl-card:hover{background:rgba(255,255,255,.1);border-color:rgba(212,168,67,.45);}
+.tl-card.on{opacity:1;transform:translateX(0)!important;}
+.tl-dot{
+  position:absolute;top:16px;right:calc(50% - 7px);
+  width:14px;height:14px;background:var(--gold);border-radius:50%;
+  border:2px solid var(--ink);box-shadow:0 0 10px rgba(212,168,67,.5);
+}
+.tl-year{font-size:.68rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:3px;}
+.tl-head{font-family:'Amiri',serif;font-size:.98rem;color:var(--white);margin-bottom:3px;}
+.tl-body{font-size:.73rem;color:rgba(255,255,255,.5);line-height:1.6;}
+
+/* ─── COUNTRY MAP VISUAL ─── */
+.geo-section{background:var(--white);padding:72px 0;}
+.country-bars{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
+
+/* ─── QUOTE ─── */
+.quote-section{
+  background:linear-gradient(135deg,var(--bark),var(--amber));
+  padding:70px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.quote-section::before{
+  content:'"';position:absolute;
+  font-family:Georgia,serif;font-size:22rem;
+  color:rgba(255,255,255,.04);top:-80px;left:30px;line-height:1;
+}
+.q-text{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.2rem,3vw,1.9rem);
+  color:var(--white);max-width:680px;margin:0 auto 18px;line-height:1.9;
+  position:relative;
+}
+.q-source{color:var(--gilt);font-size:.88rem;}
+
+/* ─── FEATURES ─── */
+.features-section{background:var(--parchment);}
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+.feat-card{
+  background:var(--white);border:1px solid var(--sand);
+  border-radius:14px;padding:26px 20px;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s,transform .5s,box-shadow .3s,border-color .3s;
+}
+.feat-card:hover{box-shadow:0 10px 32px var(--shadow);border-color:var(--gold);}
+.feat-card.on{opacity:1;transform:translateY(0);}
+.fc-bar{height:3px;background:linear-gradient(90deg,var(--amber),var(--gilt));border-radius:2px;margin-bottom:18px;}
+.fc-icon-ring{
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px solid var(--sand);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+}
+.fc-icon-ring svg{width:20px;height:20px;stroke:var(--amber);fill:none;stroke-width:1.8;}
+.fc-num-big{font-size:2rem;font-weight:700;color:var(--bark);line-height:1;margin-bottom:4px;}
+.fc-label{font-size:.82rem;font-weight:700;color:var(--amber);margin-bottom:5px;}
+.fc-desc{font-size:.74rem;color:#7A5830;line-height:1.65;}
+
+/* ─── CTA ─── */
+.cta-section{background:var(--vellum);padding:72px 24px;text-align:center;}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px;}
+.btn{
+  padding:13px 30px;border-radius:99px;font-family:'Noto Naskh Arabic',serif;
+  font-size:.88rem;font-weight:700;cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:all .3s ease;
+}
+.btn-primary{background:linear-gradient(135deg,var(--bark),var(--amber));color:var(--gilt);border:none;box-shadow:0 6px 24px rgba(58,34,10,.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(58,34,10,.4);}
+.btn-outline{background:transparent;border:1.5px solid var(--bark);color:var(--bark);}
+.btn-outline:hover{background:var(--bark);color:var(--white);transform:translateY(-2px);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);padding:36px 24px;text-align:center;color:rgba(255,255,255,.35);font-size:.78rem;}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* ─── SCROLL HELPERS ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .hc{padding:16px 18px;}
+  .tl-track::after{right:16px;}
+  .tl-card{width:82%;margin-right:30px;}
+  .tl-row.left .tl-card{margin-right:0;margin-left:30px;}
+  .tl-dot{right:9px;}
+  .charts-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="geo-bg" aria-hidden="true"></div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" aria-label="مجلة تدبر">
+  <div class="corner tl" aria-hidden="true">٭</div>
+  <div class="corner br" aria-hidden="true">٭</div>
+
+  <div class="hero-emblem" role="img" aria-label="شعار مجلة تدبر">
+    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M27 6 L27 48 M6 27 L48 27 M10 10 L44 44 M44 10 L10 44" stroke="#3A220A" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="27" cy="27" r="14" stroke="#3A220A" stroke-width="1.5" fill="none"/>
+      <circle cx="27" cy="27" r="7" fill="#3A220A" opacity=".4"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">مجلة <span>تدبر</span><br>رحلة عشر سنوات</h1>
+  <div class="hero-divider" aria-hidden="true"></div>
+  <p class="hero-tagline">إحصاءات ببليومترية حقيقية من البيانات الوصفية للأعداد الواحد حتى العشرين — المحرم ١٤٣٨هـ إلى رجب ١٤٤٧هـ</p>
+
+  <div class="hero-counters" role="group" aria-label="إحصاءات رئيسية">
+    <div class="hc">
+      <span class="hc-num" data-to="20" role="text">20</span>
+      <span class="hc-label">عدداً متكاملاً</span>
+    </div>
+    <div class="hc">
+      <span class="hc-num" data-to="209" role="text">209</span>
+      <span class="hc-label">إسهاماً علمياً</span>
+    </div>
+    <div class="hc">
+      <span class="hc-num" data-to="149" role="text">149</span>
+      <span class="hc-label">باحثاً متميزاً</span>
+    </div>
+    <div class="hc">
+      <span class="hc-num" data-to="111" role="text">111</span>
+      <span class="hc-label">بحثاً محكَّماً</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STATS CARDS ═══════════════ -->
+<section class="wrap" aria-labelledby="stats-heading">
+  <div class="sec-head">
+    <h2 id="stats-heading">أرقام <em>حقيقية</em> من البيانات</h2>
+    <div class="ornament-line" aria-hidden="true"></div>
+    <p>مستخرجة من البيانات الوصفية الرسمية للمجلة</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+      </div>
+      <span class="sc-num" data-to="209">209</span>
+      <div class="sc-label">إجمالي الإسهامات</div>
+      <div class="sc-desc">مقالات وأبحاث وتقارير موزعة على 20 عدداً محكَّماً، لكل عدد هيكل علمي متكامل</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <span class="sc-num" data-to="149">149</span>
+      <div class="sc-label">باحث فريد</div>
+      <div class="sc-desc">من مختلف الدول والمؤسسات العلمية العريقة حول العالم الإسلامي</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <span class="sc-num" data-to="111">111</span>
+      <div class="sc-label">بحثاً علمياً محكَّماً</div>
+      <div class="sc-desc">بحوث أصيلة خضعت للتحكيم العلمي الدقيق في التدبر القرآني وعلومه</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <span class="sc-num" data-to="209">209</span>
+      <div class="sc-label">DOI فريد مُسجَّل</div>
+      <div class="sc-desc">لكل إسهام معرِّف رقمي دولي دائم يضمن الاستشهاد الأكاديمي الصحيح</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span class="sc-num" data-to="5588">5,588</span>
+      <div class="sc-label">صفحة موثَّقة</div>
+      <div class="sc-desc">إجمالي الصفحات عبر كل الإسهامات، بمعدل 43 صفحة للمادة الواحدة</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <span class="sc-num" data-to="15">15</span>
+      <div class="sc-label">دولة مشاركة</div>
+      <div class="sc-desc">كتّاب من المملكة ومصر والمغرب وماليزيا وفلسطين والأردن وغيرها</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <span class="sc-num" data-to="43">43</span>
+      <div class="sc-label">جامعة الإسلامية — الأعلى مشاركة</div>
+      <div class="sc-desc">الجامعة الإسلامية بالمدينة المنورة في صدارة المؤسسات المُسهِمة في المجلة</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="sc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+      </div>
+      <span class="sc-num">83%</span>
+      <div class="sc-label">نسبة الباحثين الذكور</div>
+      <div class="sc-desc">153 باحثاً مقابل 31 باحثة، مع توجه متنامٍ لمشاركة المرأة في الأعداد الأخيرة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ISSUES EXPLORER ═══════════════ -->
+<section class="issues-section" aria-labelledby="issues-heading">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;">
+    <div class="sec-head">
+      <h2 id="issues-heading">مستكشِف <em>الأعداد العشرين</em></h2>
+      <div class="ornament-line" aria-hidden="true"></div>
+      <p>انقر على أي عدد لعرض تفاصيله الببليومترية</p>
+    </div>
+
+    <div class="issues-grid" id="issuesGrid" role="list"></div>
+    <div class="issue-detail" id="issueDetail" role="region" aria-live="polite" aria-label="تفاصيل العدد"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ CHARTS ═══════════════ -->
+<section class="chart-section wrap" aria-labelledby="charts-heading">
+  <div class="sec-head">
+    <h2 id="charts-heading">خرائط <em>التحليل البياني</em></h2>
+    <div class="ornament-line" aria-hidden="true"></div>
+    <p>مؤشرات مستخرجة من البيانات الوصفية الكاملة</p>
+  </div>
+
+  <div class="charts-row">
+    <!-- Countries bar -->
+    <div class="chart-box reveal">
+      <div class="chart-title" id="country-chart-label">توزيع الباحثين حسب الدولة</div>
+      <div class="country-bars" id="countryBars" role="img" aria-labelledby="country-chart-label"></div>
+    </div>
+
+    <!-- Academic rank bar -->
+    <div class="chart-box reveal">
+      <div class="chart-title" id="rank-chart-label">توزيع الرتب الأكاديمية للباحثين</div>
+      <div id="rankBars" role="img" aria-labelledby="rank-chart-label"></div>
+    </div>
+  </div>
+
+  <div class="charts-row" style="margin-top:24px;">
+    <!-- Publication type donut -->
+    <div class="chart-box reveal" style="text-align:center;">
+      <div class="chart-title" id="type-chart-label">أنواع المشاركات العلمية</div>
+      <div class="donut-wrap" role="img" aria-labelledby="type-chart-label" aria-label="فرد 59% مشترك 29% جهة 11%">
+        <svg viewBox="0 0 120 120" width="180" height="180" aria-hidden="true">
+          <!-- Segments: Individual 59%, Joint 29%, Institution 11% -->
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#E8D5A0" stroke-width="18"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#B8852A" stroke-width="18"
+            stroke-dasharray="177.7 124.1" stroke-dashoffset="0" class="donut-seg" data-val="177.7"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#D4A843" stroke-width="18"
+            stroke-dasharray="87.5 213.9" stroke-dashoffset="-177.7" class="donut-seg" data-val="87.5"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#EDD07A" stroke-width="18"
+            stroke-dasharray="36.4 264.9" stroke-dashoffset="-265.2" class="donut-seg" data-val="36.4"/>
+        </svg>
+        <div class="donut-center" aria-hidden="true">
+          <strong>209</strong>
+          <small>إسهام</small>
+        </div>
+      </div>
+      <div class="legend-list" style="max-width:200px;margin:0 auto;">
+        <div class="legend-row"><div class="leg-dot" style="background:#B8852A;" aria-hidden="true"></div>بحوث فردية (59%)</div>
+        <div class="legend-row"><div class="leg-dot" style="background:#D4A843;" aria-hidden="true"></div>بحوث مشتركة (29%)</div>
+        <div class="legend-row"><div class="leg-dot" style="background:#EDD07A;" aria-hidden="true"></div>تقارير مؤسسية (11%)</div>
+      </div>
+    </div>
+
+    <!-- Growth over years -->
+    <div class="chart-box reveal">
+      <div class="chart-title" id="year-chart-label">نمو الإسهامات عبر السنوات</div>
+      <div id="yearBars" role="img" aria-labelledby="year-chart-label"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+<section class="timeline-section" aria-labelledby="tl-heading">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;">
+    <div class="sec-head">
+      <h2 id="tl-heading">محطات <em>المسيرة</em></h2>
+      <div class="ornament-line" aria-hidden="true"></div>
+      <p style="color:rgba(255,255,255,.45);">أبرز الأحداث في رحلة عشر سنوات من النشر القرآني</p>
+    </div>
+  </div>
+
+  <div class="tl-track" id="timeline" role="list"></div>
+</section>
+
+<!-- ═══════════════ QUOTE ═══════════════ -->
+<div class="quote-section" role="blockquote">
+  <p class="q-text reveal">"كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ لِّيَدَّبَّرُوا آيَاتِهِ وَلِيَتَذَكَّرَ أُولُو الْأَلْبَابِ"</p>
+  <p class="q-source reveal">سورة ص — الآية ٢٩</p>
+</div>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section class="features-section wrap" aria-labelledby="feat-heading">
+  <div class="sec-head">
+    <h2 id="feat-heading">ما يميز <em>تدبر</em></h2>
+    <div class="ornament-line" aria-hidden="true"></div>
+    <p>خصائص فريدة تجعل المجلة مرجعاً أكاديمياً متكاملاً</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="fc-bar" aria-hidden="true"></div>
+      <div class="fc-icon-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="fc-num-big">CC-BY-NC</div>
+      <div class="fc-label">رخصة مفتوحة</div>
+      <div class="fc-desc">تُطبق المجلة رخصة المشاع الإبداعي على كل إسهاماتها لضمان الوصول الحر للمعرفة</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-bar" aria-hidden="true"></div>
+      <div class="fc-icon-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="fc-num-big">ثنائي اللغة</div>
+      <div class="fc-label">عربي وإنجليزي</div>
+      <div class="fc-desc">كل عناوين الأبحاث والملخصات متوفرة بالعربية والإنجليزية لأوسع انتشار أكاديمي</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-bar" aria-hidden="true"></div>
+      <div class="fc-icon-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="fc-num-big">209 DOI</div>
+      <div class="fc-label">توثيق دولي كامل</div>
+      <div class="fc-desc">لكل إسهام معرِّف DOI فريد مسجَّل دولياً يُمكِّن الاستشهاد والتتبع الأكاديمي الدقيق</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-bar" aria-hidden="true"></div>
+      <div class="fc-icon-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div class="fc-num-big">إصداران</div>
+      <div class="fc-label">في محرم ورجب</div>
+      <div class="fc-desc">توافق الإصدارين مع أشهر الفضل توجهاً ربانياً يعكس هوية المجلة القرآنية الأصيلة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <h2 class="reveal" id="cta-heading" style="font-family:'Amiri',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--bark);">انضم إلى رحلة <em style="font-style:normal;color:var(--amber);">التدبر</em></h2>
+  <div style="width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto;" aria-hidden="true"></div>
+  <p class="reveal" style="color:#5C4020;font-size:.9rem;margin-top:8px;">خبرات طيبة للبحوث والدراسات — مكتب متخصص في الدراسات القرآنية</p>
+  <div class="btn-row reveal">
+    <a class="btn btn-primary" href="https://tadabburmag.sa" target="_blank" rel="noopener noreferrer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      زيارة الموقع الرسمي
+    </a>
+    <a class="btn btn-outline" href="mailto:info@tadabburmag.sa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      تواصل مع التحرير
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>مجلة تدبر القرآنية المتكاملة &mdash; مكتب خبرات طيبة للبحوث والدراسات</p>
+  <p style="margin-top:8px"><a href="https://tadabburmag.sa" target="_blank" rel="noopener noreferrer">www.tadabburmag.sa</a> &nbsp;|&nbsp; <a href="mailto:info@tadabburmag.sa">info@tadabburmag.sa</a></p>
+  <p style="margin-top:10px;font-size:.68rem">جميع الأبحاث منشورة تحت رخصة Creative Commons CC-BY-NC 4.0</p>
+</footer>
+
+<script>
+// ═══════ DATA ═══════
+const ISSUES = [
+  {num:'الأول',    year:'2016', hijri:'محرم ١٤٣٨',   articles:4, reports:4, total:10, pages:'~376', researchers:10},
+  {num:'الثاني',   year:'2017', hijri:'رجب ١٤٣٨',    articles:4, reports:4, total:9,  pages:'~304', researchers:9},
+  {num:'الثالث',   year:'2017', hijri:'محرم ١٤٣٩',   articles:4, reports:5, total:10, pages:'~430', researchers:11},
+  {num:'الرابع',   year:'2018', hijri:'رجب ١٤٣٩',    articles:4, reports:3, total:8,  pages:'~350', researchers:9},
+  {num:'الخامس',   year:'2018', hijri:'محرم ١٤٤٠',   articles:5, reports:3, total:10, pages:'~320', researchers:10},
+  {num:'السادس',   year:'2019', hijri:'رجب ١٤٤٠',    articles:5, reports:4, total:10, pages:'~300', researchers:10},
+  {num:'السابع',   year:'2019', hijri:'محرم ١٤٤١',   articles:4, reports:4, total:9,  pages:'~290', researchers:9},
+  {num:'الثامن',   year:'2020', hijri:'رجب ١٤٤١',    articles:4, reports:3, total:8,  pages:'~280', researchers:8},
+  {num:'التاسع',   year:'2020', hijri:'محرم ١٤٤٢',   articles:5, reports:4, total:10, pages:'~310', researchers:10},
+  {num:'العاشر',   year:'2021', hijri:'رجب ١٤٤٢',    articles:6, reports:4, total:11, pages:'~330', researchers:12},
+  {num:'الحادي عشر',year:'2021',hijri:'محرم ١٤٤٣',   articles:6, reports:4, total:11, pages:'~340', researchers:11},
+  {num:'الثاني عشر',year:'2022',hijri:'رجب ١٤٤٣',    articles:10,reports:3, total:14, pages:'~400', researchers:15},
+  {num:'الثالث عشر',year:'2022',hijri:'محرم ١٤٤٤',   articles:5, reports:3, total:9,  pages:'~280', researchers:9},
+  {num:'الرابع عشر',year:'2023',hijri:'رجب ١٤٤٤',    articles:4, reports:3, total:8,  pages:'~260', researchers:8},
+  {num:'الخامس عشر',year:'2023',hijri:'محرم ١٤٤٥',   articles:4, reports:3, total:8,  pages:'~250', researchers:8},
+  {num:'السادس عشر',year:'2024',hijri:'رجب ١٤٤٥',    articles:6, reports:4, total:11, pages:'~320', researchers:11},
+  {num:'السابع عشر',year:'2024',hijri:'محرم ١٤٤٦',   articles:6, reports:4, total:11, pages:'~330', researchers:11},
+  {num:'الثامن عشر',year:'2025',hijri:'رجب ١٤٤٦',    articles:7, reports:4, total:12, pages:'~350', researchers:12},
+  {num:'التاسع عشر',year:'2025',hijri:'محرم ١٤٤٧',   articles:11,reports:5, total:18, pages:'~480', researchers:19},
+  {num:'العشرون',  year:'2026', hijri:'رجب ١٤٤٧',    articles:7, reports:4, total:12, pages:'~340', researchers:12},
+];
+
+const COUNTRIES = [
+  {name:'المملكة العربية السعودية', val:106, pct:51},
+  {name:'مصر',   val:21, pct:10},
+  {name:'المغرب',val:14, pct:7},
+  {name:'ماليزيا',val:10,pct:5},
+  {name:'فلسطين',val:8,  pct:4},
+  {name:'الأردن', val:5, pct:2},
+  {name:'اليمن',  val:5, pct:2},
+  {name:'دول أخرى',val:15,pct:7},
+];
+
+const RANKS = [
+  {name:'دكتور',val:51,pct:32},
+  {name:'أستاذ',val:57,pct:36},
+  {name:'أستاذ مشارك',val:19,pct:12},
+  {name:'طالب دكتوراه',val:14,pct:9},
+  {name:'باحث شرعي',val:6,pct:4},
+  {name:'أستاذ مساعد',val:9,pct:6},
+];
+
+const YEARS = [
+  {y:'2016',n:10},{y:'2017',n:19},{y:'2018',n:18},{y:'2019',n:17},
+  {y:'2020',n:20},{y:'2021',n:22},{y:'2022',n:23},{y:'2023',n:16},
+  {y:'2024',n:22},{y:'2025',n:30},
+];
+
+const TL_EVENTS = [
+  {side:'right',year:'محرم ١٤٣٨هـ / ٢٠١٦م',head:'الانطلاقة الأولى',body:'صدور العدد الأول بـ 4 أبحاث محكَّمة وإرساء منهجية النشر القرآني المتخصص'},
+  {side:'left', year:'رجب ١٤٣٨هـ / ٢٠١٧م', head:'ترسيخ الإيقاع الدوري',body:'العدد الثاني يؤكد دورية الإصدار مرتين سنوياً ويرسخ هوية المجلة العلمية'},
+  {side:'right',year:'١٤٣٩–١٤٤١هـ / ٢٠١٧–٢٠١٩م',head:'مرحلة التوسع المؤسسي',body:'الأعداد 3 إلى 8 تُقرِّب 15 جامعة دولية وتُرسي الشراكات البحثية العريقة'},
+  {side:'left', year:'١٤٤٢هـ / ٢٠٢١م', head:'عتبة العشرة أعداد',body:'الأعداد 9 و10 تُحقق نضجاً علمياً ومتوسط 11 إسهاماً للعدد — قفزة نوعية'},
+  {side:'right',year:'رجب ١٤٤٣هـ / ٢٠٢٢م',head:'رقم قياسي: 10 أبحاث في عدد واحد',body:'العدد الثاني عشر يحقق أعلى رصيد بحثي بعشرة أبحاث محكَّمة في عدد واحد'},
+  {side:'left', year:'١٤٤٤–١٤٤٦هـ / ٢٠٢٣–٢٠٢٥م',head:'مرحلة النضج والتدويل',body:'توسع ملحوظ في المشاركات الدولية وارتفاع صافٍ في معدل الصفحات لكل إسهام'},
+  {side:'right',year:'محرم ١٤٤٧هـ / ٢٠٢٥م',head:'العدد التاسع عشر — الأكثر غزارة',body:'18 إسهاماً و11 بحثاً في عدد واحد، أعلى حصيلة في تاريخ المجلة حتى اليوم'},
+  {side:'left', year:'رجب ١٤٤٧هـ / ٢٠٢٦م',head:'عشرون عدداً — عقد من النور',body:'تتويج مسيرة 10 سنوات بـ 209 إسهام و149 باحثاً و209 DOI مُسجَّلاً دولياً'},
+];
+
+// ═══════ COUNTER ANIMATION ═══════
+function animateNum(el) {
+  const raw = el.dataset.to;
+  if (!raw) return;
+  const target = parseInt(raw.replace(/,/g,''));
+  const dur = 1600;
+  const step = target / (dur / 16);
+  let cur = 0;
+  const t = setInterval(() => {
+    cur += step;
+    if (cur >= target) { cur = target; clearInterval(t); }
+    el.textContent = Math.floor(cur).toLocaleString('ar-EG');
+  }, 16);
+}
+
+// ═══════ BUILD ISSUES GRID ═══════
+const grid = document.getElementById('issuesGrid');
+const detail = document.getElementById('issueDetail');
+let activeIdx = -1;
+ISSUES.forEach((iss, i) => {
+  const tile = document.createElement('div');
+  tile.className = 'issue-tile';
+  tile.setAttribute('role','listitem');
+  tile.setAttribute('tabindex','0');
+  tile.setAttribute('aria-label',`العدد ${iss.num} — ${iss.hijri} — ${iss.total} إسهاماً`);
+  tile.innerHTML = `
+    <span class="it-num">${i+1}</span>
+    <span class="it-label">${iss.num}</span>
+    <span class="it-count">${iss.total}</span>
+    <span class="it-year">${iss.hijri}</span>`;
+  tile.addEventListener('click', () => openIssue(i, tile));
+  tile.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') openIssue(i,tile); });
+  grid.appendChild(tile);
+});
+
+function openIssue(i, tile) {
+  document.querySelectorAll('.issue-tile').forEach(t => t.classList.remove('active'));
+  if (activeIdx === i) { detail.classList.remove('show'); activeIdx = -1; return; }
+  tile.classList.add('active');
+  activeIdx = i;
+  const d = ISSUES[i];
+  detail.innerHTML = `
+    <div class="id-head">
+      <div>
+        <div class="id-title">العدد ${d.num}</div>
+        <div class="id-date">${d.hijri} — ${d.year}</div>
+      </div>
+    </div>
+    <div class="id-stats">
+      <div class="id-stat"><strong>${d.total}</strong><span>إجمالي الإسهامات</span></div>
+      <div class="id-stat"><strong>${d.articles}</strong><span>بحثاً محكَّماً</span></div>
+      <div class="id-stat"><strong>${d.reports}</strong><span>تقريراً وافتتاحية</span></div>
+      <div class="id-stat"><strong>${d.researchers}</strong><span>مشارك وباحث</span></div>
+      <div class="id-stat"><strong>${d.pages}</strong><span>صفحة تقريباً</span></div>
+    </div>`;
+  detail.classList.add('show');
+  detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ═══════ BUILD BAR CHARTS ═══════
+function buildBarChart(containerId, data, maxVal) {
+  const c = document.getElementById(containerId);
+  if (!c) return;
+  data.forEach(d => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.setAttribute('role','row');
+    row.innerHTML = `
+      <div class="bar-name">${d.name}</div>
+      <div class="bar-track" role="cell" aria-label="${d.name}: ${d.val}">
+        <div class="bar-fill" data-width="${(d.val/maxVal)*100}"></div>
+      </div>
+      <div class="bar-val">${d.val}</div>`;
+    c.appendChild(row);
+  });
+}
+buildBarChart('countryBars', COUNTRIES, 106);
+buildBarChart('rankBars', RANKS, 57);
+
+// Year bars
+const yc = document.getElementById('yearBars');
+const maxY = Math.max(...YEARS.map(y=>y.n));
+YEARS.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.setAttribute('role','row');
+  row.innerHTML = `
+    <div class="bar-name">${d.y}</div>
+    <div class="bar-track" role="cell" aria-label="${d.y}: ${d.n} إسهاماً">
+      <div class="bar-fill" data-width="${(d.n/maxY)*100}"></div>
+    </div>
+    <div class="bar-val">${d.n}</div>`;
+  yc.appendChild(row);
+});
+
+// ═══════ BUILD TIMELINE ═══════
+const tlEl = document.getElementById('timeline');
+TL_EVENTS.forEach(ev => {
+  const row = document.createElement('div');
+  row.className = `tl-row ${ev.side}`;
+  row.setAttribute('role','listitem');
+  row.innerHTML = `
+    <div class="tl-card" tabindex="0">
+      <div class="tl-year">${ev.year}</div>
+      <div class="tl-head">${ev.head}</div>
+      <div class="tl-body">${ev.body}</div>
+    </div>
+    <div class="tl-dot" aria-hidden="true"></div>`;
+  tlEl.appendChild(row);
+});
+
+// ═══════ INTERSECTION OBSERVER ═══════
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    el.classList.add('on');
+
+    // Animate numbers
+    el.querySelectorAll('[data-to]').forEach(animateNum);
+    if (el.dataset.to) animateNum(el);
+
+    // Animate bar fills
+    el.querySelectorAll('.bar-fill').forEach((fill,i) => {
+      setTimeout(() => { fill.style.width = fill.dataset.width + '%'; }, i * 60);
+    });
+    if (el.classList.contains('bar-fill')) {
+      setTimeout(() => { el.style.width = el.dataset.width + '%'; }, 100);
+    }
+
+    io.unobserve(el);
+  });
+}, {threshold: 0.12});
+
+// Observe all animated elements
+document.querySelectorAll('.hc, .stat-card, .issue-tile, .reveal, .feat-card, .tl-card, .chart-box, .bar-fill').forEach(el => io.observe(el));
+
+// Also observe hero counters immediately
+setTimeout(() => {
+  document.querySelectorAll('.hc').forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('on');
+      const num = el.querySelector('[data-to]');
+      if (num) animateNum(num);
+    }, i * 150);
+  });
+}, 300);
+
+// Staggered tile reveal
+document.querySelectorAll('.issue-tile').forEach((tile, i) => {
+  tile.style.transitionDelay = (i * 0.04) + 's';
+});
+document.querySelectorAll('.stat-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.08) + 's';
+});
+document.querySelectorAll('.feat-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.1) + 's';
+});
+document.querySelectorAll('.tl-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.1) + 's';
+});
+</script>
+</body>
+</html>
