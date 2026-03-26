@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجلة تدبر - رحلة عشر سنوات</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C87A;
+    --gold-dark: #8B6914;
+    --brown: #4A2E0A;
+    --brown-light: #6B4423;
+    --cream: #FDF6E3;
+    --cream-dark: #F0E4C0;
+    --text-dark: #2C1A08;
+    --text-mid: #5C3D1E;
+    --white: #FFFDF7;
+    --shadow: rgba(74,46,10,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--brown) 0%, #2C1A08 40%, #1A0E04 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+  }
+
+  .hero-ornament {
+    font-family: 'Amiri', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 20px; right: 40px;
+    animation: float 6s ease-in-out infinite;
+  }
+  .hero-ornament-2 {
+    font-family: 'Amiri', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 40px; left: 60px;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .logo-badge {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Amiri', serif;
+    font-size: 2.5rem;
+    color: var(--brown);
+    box-shadow: 0 8px 40px rgba(201,168,76,0.4), 0 0 0 2px rgba(201,168,76,0.2);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%,100% { box-shadow: 0 8px 40px rgba(201,168,76,0.4), 0 0 0 2px rgba(201,168,76,0.2); }
+    50% { box-shadow: 0 8px 60px rgba(201,168,76,0.7), 0 0 0 8px rgba(201,168,76,0.1); }
+  }
+
+  .hero h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: var(--gold-light);
+    line-height: 1.3;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 span { color: var(--white); }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    color: rgba(255,255,255,0.6);
+    max-width: 550px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .hero-divider {
+    width: 120px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto;
+  }
+
+  /* === BIG STATS ROW === */
+  .big-stats {
+    display: flex; gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .big-stat {
+    text-align: center;
+    padding: 20px 36px;
+    border-right: 1px solid rgba(201,168,76,0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .big-stat:last-child { border-right: none; }
+  .big-stat.visible { opacity: 1; transform: translateY(0); }
+
+  .big-stat-num {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    font-variant-numeric: tabular-nums;
+  }
+  .big-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 6px;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+
+  /* === SECTION WRAPPER === */
+  .section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .section-title span { color: var(--gold-dark); }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    margin-bottom: 50px;
+  }
+
+  .gold-line {
+    width: 80px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 12px auto 40px;
+    border-radius: 2px;
+  }
+
+  /* === TIMELINE === */
+  .timeline-section {
+    background: linear-gradient(180deg, var(--brown) 0%, var(--brown-light) 100%);
+    padding: 80px 24px;
+  }
+
+  .timeline-section .section-title { color: var(--gold-light); }
+  .timeline-section .section-subtitle { color: rgba(255,255,255,0.55); }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    transform: translateX(50%);
+  }
+
+  .tl-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.5s ease;
+  }
+  .tl-item.left {
+    justify-content: flex-start;
+    transform: translateX(-40px);
+  }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+
+  .tl-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 22px;
+    width: 42%;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .tl-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(201,168,76,0.5);
+    transform: scale(1.02);
+  }
+
+  .tl-dot {
+    position: absolute;
+    right: calc(50% - 10px);
+    top: 18px;
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--brown);
+    box-shadow: 0 0 12px rgba(201,168,76,0.5);
+  }
+  .tl-item.left .tl-dot { right: calc(50% - 10px); }
+
+  .tl-year {
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .tl-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .tl-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* === CHART BAR === */
+  .chart-section { background: var(--white); }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 200px;
+    padding: 0 10px;
+    direction: ltr;
+  }
+
+  .bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .bar {
+    width: 100%;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+    border-radius: 6px 6px 0 0;
+    transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    cursor: pointer;
+  }
+  .bar:hover { filter: brightness(1.2); }
+  .bar-val {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+  .bar-label {
+    font-size: 0.65rem;
+    color: var(--text-mid);
+    text-align: center;
+    direction: rtl;
+  }
+
+  /* === CARD GRID === */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 16px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s, border-color 0.3s;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  }
+  .feature-card:hover {
+    box-shadow: 0 12px 40px var(--shadow);
+    border-color: var(--gold-light);
+    transform: translateY(-4px) !important;
+  }
+  .feature-card.visible { opacity: 1; transform: translateY(0); }
+
+  .fc-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .fc-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--gold-dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .fc-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 6px;
+  }
+  .fc-desc {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* === DONUT CHART === */
+  .donut-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .donut-wrap {
+    position: relative;
+    width: 200px; height: 200px;
+  }
+  .donut-wrap svg { transform: rotate(-90deg); }
+  .donut-label {
+    position: absolute;
+    inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-weight: 900;
+    color: var(--brown);
+  }
+  .donut-label span { font-size: 2rem; line-height: 1; }
+  .donut-label small { font-size: 0.7rem; color: var(--text-mid); font-weight: 400; text-align: center; }
+
+  .legend { display: flex; flex-direction: column; gap: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-dark); }
+  .legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+
+  /* === QUOTE BANNER === */
+  .quote-banner {
+    background: linear-gradient(135deg, var(--brown), var(--gold-dark));
+    padding: 70px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-banner::before {
+    content: '❝';
+    position: absolute;
+    font-size: 20rem;
+    color: rgba(255,255,255,0.04);
+    top: -60px; left: 40px;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    color: var(--white);
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+    position: relative;
+  }
+  .quote-source {
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* === PROGRESS BARS === */
+  .progress-list { display: flex; flex-direction: column; gap: 18px; }
+  .progress-item { }
+  .prog-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.88rem; font-weight: 600; color: var(--brown); }
+  .prog-track {
+    height: 10px; background: var(--cream-dark); border-radius: 99px; overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    border-radius: 99px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+
+  /* === CTA === */
+  .cta-section {
+    background: var(--cream-dark);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta-grid {
+    display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 40px;
+  }
+  .cta-btn {
+    padding: 14px 32px;
+    border-radius: 99px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, var(--brown), var(--gold-dark));
+    color: var(--gold-light);
+    border: none;
+    box-shadow: 0 6px 24px rgba(74,46,10,0.3);
+  }
+  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(74,46,10,0.4); }
+  .cta-secondary {
+    background: transparent;
+    border: 2px solid var(--brown);
+    color: var(--brown);
+  }
+  .cta-secondary:hover { background: var(--brown); color: var(--white); transform: translateY(-2px); }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--text-dark);
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* === COUNTER ANIMATION === */
+  .counting { font-variant-numeric: tabular-nums; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    .tl-card { width: 80%; }
+    .timeline::before { right: 20px; }
+    .tl-dot { right: 10px; }
+    .tl-item, .tl-item.left { justify-content: flex-start; padding-right: 50px; }
+    .bar-chart { gap: 4px; }
+    .big-stat { padding: 16px 20px; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament">﷽</div>
+  <div class="hero-ornament-2">تدبر</div>
+  
+  <div class="logo-badge">📖</div>
+
+  <h1>مجلة <span>تدبر</span><br>رحلة عشر سنوات</h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">من المحرم ١٤٣٨هـ حتى رجب ١٤٤٧هـ — عشرون عدداً من التدبر القرآني المتكامل</p>
+
+  <div class="big-stats">
+    <div class="big-stat">
+      <span class="big-stat-num counting" data-target="20">0</span>
+      <span class="big-stat-label">عدداً متكاملاً</span>
+    </div>
+    <div class="big-stat">
+      <span class="big-stat-num counting" data-target="10">0</span>
+      <span class="big-stat-label">سنوات عطاء</span>
+    </div>
+    <div class="big-stat">
+      <span class="big-stat-num counting" data-target="2">0</span>
+      <span class="big-stat-label">إصداران سنوياً</span>
+    </div>
+    <div class="big-stat">
+      <span class="big-stat-num counting" data-target="1438" data-suffix="هـ">0</span>
+      <span class="big-stat-label">بداية المسيرة</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS CARDS -->
+<section class="section chart-section">
+  <h2 class="section-title">أرقام <span>تتحدث</span></h2>
+  <div class="gold-line"></div>
+  <p class="section-subtitle">إحصاءات تُعبّر عن مسيرة حافلة بالعطاء القرآني</p>
+  
+  <div class="card-grid">
+    <div class="feature-card">
+      <span class="fc-icon">📅</span>
+      <span class="fc-num counting" data-target="20">0</span>
+      <div class="fc-title">عدداً متكاملاً</div>
+      <div class="fc-desc">صدر أول عدد في المحرم ١٤٣٨هـ وآخرها في رجب ١٤٤٧هـ</div>
+    </div>
+    <div class="feature-card">
+      <span class="fc-icon">🕌</span>
+      <span class="fc-num">مُحرَّم</span>
+      <div class="fc-title">ورجب موعدانا</div>
+      <div class="fc-desc">توافق الإصدارين مع أشهر الفضل تعبيراً عن روح التدبر القرآني</div>
+    </div>
+    <div class="feature-card">
+      <span class="fc-icon">🌍</span>
+      <span class="fc-num counting" data-target="120">0</span>
+      <div class="fc-title">ألف قارئ تقريباً</div>
+      <div class="fc-desc">توزُّع واسع في دول العالم الإسلامي من خلال الموقع والتطبيق</div>
+    </div>
+    <div class="feature-card">
+      <span class="fc-icon">📚</span>
+      <span class="fc-num counting" data-target="200">0</span>
+      <div class="fc-title">مادة علمية+</div>
+      <div class="fc-desc">مقالات وأبحاث تدبرية موزعة على عشرين عدداً ثرياً</div>
+    </div>
+    <div class="feature-card">
+      <span class="fc-icon">✍️</span>
+      <span class="fc-num counting" data-target="80">0</span>
+      <div class="fc-title">كاتباً وباحثاً</div>
+      <div class="fc-desc">نخبة من العلماء والمختصين ساهموا في إثراء المحتوى التدبري</div>
+    </div>
+    <div class="feature-card">
+      <span class="fc-icon">💎</span>
+      <span class="fc-num">تفاعلية</span>
+      <div class="fc-title">نسخة رقمية متطورة</div>
+      <div class="fc-desc">انطلقت التجربة التفاعلية الرقمية لتوسيع الأثر وتعزيز التجربة</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <h2 class="section-title">مسيرة <span style="color:var(--gold)">العطاء</span></h2>
+    <div class="gold-line"></div>
+    <p class="section-subtitle">محطات فارقة في رحلة تدبر القرآن الكريم</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">المحرم ١٤٣٨هـ — أكتوبر ٢٠١٦م</div>
+        <div class="tl-title">🌱 الانطلاقة الأولى</div>
+        <div class="tl-desc">صدور العدد الأول من مجلة تدبر التفاعلية، وكانت بداية رحلة مبارك</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item left">
+      <div class="tl-card">
+        <div class="tl-year">رجب ١٤٣٨هـ — أبريل ٢٠١٧م</div>
+        <div class="tl-title">📖 الإيقاع يترسّخ</div>
+        <div class="tl-desc">العدد الثاني يؤكد الإصدار الدوري مرتين سنوياً، ويرسخ هوية المجلة</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">١٤٣٩–١٤٤٠هـ</div>
+        <div class="tl-title">🚀 مرحلة التوسع</div>
+        <div class="tl-desc">أعداد ٣ و٤ و٥ تُوسّع المحتوى التدبري وتضم أقلاماً علمية متنوعة</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item left">
+      <div class="tl-card">
+        <div class="tl-year">١٤٤١–١٤٤٢هـ</div>
+        <div class="tl-title">🌐 العبور الرقمي</div>
+        <div class="tl-desc">الأعداد ٦-١٠ توسع الانتشار الرقمي وتصل إلى شريحة أوسع من القراء حول العالم</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">١٤٤٣–١٤٤٤هـ</div>
+        <div class="tl-title">⭐ النضج والتميز</div>
+        <div class="tl-desc">الأعداد ١١-١٤ تشهد نضجاً في المضمون وارتفاع ملحوظ في التفاعل</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item left">
+      <div class="tl-card">
+        <div class="tl-year">١٤٤٥–١٤٤٧هـ</div>
+        <div class="tl-title">🏆 عقد من الإنجاز</div>
+        <div class="tl-desc">الأعداد ١٥-٢٠ تتوّج مسيرة عشر سنوات بثراء علمي وتفاعلي غير مسبوق</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION / BAR CHART -->
+<section class="section" style="background: var(--white);">
+  <h2 class="section-title">توزيع <span>الإصدارات</span> سنوياً</h2>
+  <div class="gold-line"></div>
+  <p class="section-subtitle">عدد إصدار في كل عام هجري — نبض منتظم لعقد من الزمن</p>
+
+  <div class="bar-chart" id="barChart" style="direction:rtl; align-items: flex-end;">
+    <!-- Bars injected by JS -->
+  </div>
+</section>
+
+<!-- CONTENT BREAKDOWN -->
+<section class="section" style="background: var(--cream);">
+  <h2 class="section-title">تنوع <span>المحتوى</span></h2>
+  <div class="gold-line"></div>
+  <p class="section-subtitle">خارطة بصرية لأبرز محاور المجلة عبر عشرين عدداً</p>
+
+  <div class="donut-section">
+    <div class="donut-wrap reveal">
+      <svg viewBox="0 0 120 120" width="200" height="200">
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#F0E4C0" stroke-width="16"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#C9A84C" stroke-width="16"
+          stroke-dasharray="125 189" stroke-dashoffset="0" class="donut-arc" data-pct="66"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#8B6914" stroke-width="16"
+          stroke-dasharray="57 257" stroke-dashoffset="-125" class="donut-arc" data-pct="30"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#E8C87A" stroke-width="16"
+          stroke-dasharray="8 306" stroke-dashoffset="-182"/>
+      </svg>
+      <div class="donut-label">
+        <span>📊</span>
+        <small>توزيع<br>المحتوى</small>
+      </div>
+    </div>
+    <div class="legend reveal">
+      <div class="legend-item"><div class="legend-dot" style="background:#C9A84C"></div> مقالات تدبرية وتفسيرية (٦٦٪)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8B6914"></div> دراسات وأبحاث علمية (٣٠٪)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#E8C87A"></div> ملفات خاصة وحوارات (٤٪)</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <div class="progress-list">
+      <div class="prog-row reveal">
+        <div class="prog-header"><span>📌 التدبر الموضوعي للقرآن</span><span>٩٠٪</span></div>
+        <div class="prog-track"><div class="prog-fill" data-width="90"></div></div>
+      </div>
+      <div class="prog-row reveal">
+        <div class="prog-header"><span>🌟 التفسير الإشاري والبياني</span><span>٧٥٪</span></div>
+        <div class="prog-track"><div class="prog-fill" data-width="75"></div></div>
+      </div>
+      <div class="prog-row reveal">
+        <div class="prog-header"><span>📖 العلوم القرآنية المتخصصة</span><span>٦٠٪</span></div>
+        <div class="prog-track"><div class="prog-fill" data-width="60"></div></div>
+      </div>
+      <div class="prog-row reveal">
+        <div class="prog-header"><span>🤲 التربية القرآنية والسلوكية</span><span>٨٠٪</span></div>
+        <div class="prog-track"><div class="prog-fill" data-width="80"></div></div>
+      </div>
+      <div class="prog-row reveal">
+        <div class="prog-header"><span>💡 الإعجاز العلمي والبياني</span><span>٥٥٪</span></div>
+        <div class="prog-track"><div class="prog-fill" data-width="55"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner">
+  <div class="quote-text reveal">
+    "كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ لِّيَدَّبَّرُوا آيَاتِهِ وَلِيَتَذَكَّرَ أُولُو الْأَلْبَابِ"
+  </div>
+  <div class="quote-source reveal">سورة ص — الآية ٢٩</div>
+</div>
+
+<!-- WHY TADABBUR -->
+<section class="section" style="background: var(--cream);">
+  <h2 class="section-title">لماذا <span>تدبر؟</span></h2>
+  <div class="gold-line"></div>
+  <p class="section-subtitle">ما يميّز مجلة تدبر عن غيرها من الإصدارات القرآنية</p>
+
+  <div class="card-grid">
+    <div class="feature-card reveal">
+      <span class="fc-icon">🎯</span>
+      <div class="fc-title">تخصص دقيق</div>
+      <div class="fc-desc">مجلة متخصصة حصرياً في التدبر القرآني بمنهجية علمية رصينة</div>
+    </div>
+    <div class="feature-card reveal">
+      <span class="fc-icon">🔄</span>
+      <div class="fc-title">تفاعلية ومتجددة</div>
+      <div class="fc-desc">نسخة تفاعلية رقمية تجمع بين الأصالة والحداثة في تجربة قراءة فريدة</div>
+    </div>
+    <div class="feature-card reveal">
+      <span class="fc-icon">🧠</span>
+      <div class="fc-title">محتوى علمي رفيع</div>
+      <div class="fc-desc">يُشارك فيها نخبة من العلماء والباحثين المتخصصين في الدراسات القرآنية</div>
+    </div>
+    <div class="feature-card reveal">
+      <span class="fc-icon">🌐</span>
+      <div class="fc-title">انتشار واسع</div>
+      <div class="fc-desc">متاحة للقراءة والتحميل المجاني للوصول إلى أكبر عدد ممكن من القراء</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="section-title reveal">انضم إلى <span>رحلة التدبر</span></h2>
+  <div class="gold-line"></div>
+  <p class="section-subtitle reveal">ابدأ رحلتك مع عشرين عدداً من أجود المحتوى القرآني التدبري</p>
+  <div class="cta-grid reveal">
+    <a class="cta-btn cta-primary" href="http://www.tadabburmag.sa" target="_blank">🌐 زيارة الموقع</a>
+    <a class="cta-btn cta-secondary" href="/cdn-cgi/l/email-protection#ea83848c85aa9e8b8e8b88889f98878b8dc4998b">✉️ تواصل معنا</a>
+    <a class="cta-btn cta-secondary" href="tel:+966503072333">📞 +966 503 072 333</a>
+  </div>
+</section>
+
+<footer>
+  <p>مجلة تدبر القرآنية المتكاملة — خبرات طيبة للبحوث والدراسات</p>
+  <p style="margin-top:8px"><a href="http://www.tadabburmag.sa">www.tadabburmag.sa</a></p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// === COUNTER ANIMATION ===
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = Math.floor(current).toLocaleString('ar-SA') + suffix;
+  }, 16);
+}
+
+// === BAR CHART ===
+const barData = [
+  { year: '١٤٣٨هـ', label: '2016-17', val: 2 },
+  { year: '١٤٣٩هـ', label: '2017-18', val: 2 },
+  { year: '١٤٤٠هـ', label: '2018-19', val: 2 },
+  { year: '١٤٤١هـ', label: '2019-20', val: 2 },
+  { year: '١٤٤٢هـ', label: '2020-21', val: 2 },
+  { year: '١٤٤٣هـ', label: '2021-22', val: 2 },
+  { year: '١٤٤٤هـ', label: '2022-23', val: 2 },
+  { year: '١٤٤٥هـ', label: '2023-24', val: 2 },
+  { year: '١٤٤٦هـ', label: '2024-25', val: 2 },
+  { year: '١٤٤٧هـ', label: '2025-26', val: 2 },
+];
+const maxVal = Math.max(...barData.map(d => d.val));
+const chartEl = document.getElementById('barChart');
+barData.forEach(d => {
+  const pct = (d.val / (maxVal + 1)) * 100;
+  const wrap = document.createElement('div');
+  wrap.className = 'bar-wrap';
+  wrap.innerHTML = `
+    <div class="bar" style="height: 0%; transition-delay: 0.1s;" data-height="${pct}">
+      <div class="bar-val">${d.val}</div>
+    </div>
+    <div class="bar-label">${d.year}</div>
+  `;
+  chartEl.appendChild(wrap);
+});
+
+// === SCROLL OBSERVER ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      el.classList.add('visible');
+
+      // Counter
+      if (el.classList.contains('counting')) animateCounter(el);
+
+      // Progress bars inside
+      el.querySelectorAll('.prog-fill').forEach((fill, i) => {
+        setTimeout(() => {
+          fill.style.width = fill.dataset.width + '%';
+        }, i * 150);
+      });
+
+      // Bars
+      if (el.id === 'barChart' || el.closest('#barChart')) {
+        document.querySelectorAll('.bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.height = bar.dataset.height + '%';
+          }, i * 80);
+        });
+      }
+
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.15 });
+
+// Observe everything
+document.querySelectorAll('.big-stat, .feature-card, .reveal, .tl-item, .prog-row, #barChart').forEach(el => {
+  observer.observe(el);
+});
+
+// Trigger counters in hero immediately
+setTimeout(() => {
+  document.querySelectorAll('.hero .counting').forEach(el => {
+    el.closest('.big-stat').classList.add('visible');
+    animateCounter(el);
+  });
+}, 400);
+
+// Progress bars — observe parent
+document.querySelectorAll('.prog-row').forEach(row => {
+  const fill = row.querySelector('.prog-fill');
+  const rowObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      fill.style.width = fill.dataset.width + '%';
+      rowObs.unobserve(row);
+    }
+  }, { threshold: 0.3 });
+  rowObs.observe(row);
+});
+
+// Bar chart observer
+const barObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    document.querySelectorAll('.bar').forEach((bar, i) => {
+      setTimeout(() => { bar.style.height = bar.da
