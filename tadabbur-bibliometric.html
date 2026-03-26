@@ -93,13 +93,10 @@ body{
   border:1px solid rgba(212,168,67,.2);border-radius:12px;
   overflow:hidden;background:rgba(255,255,255,.04);backdrop-filter:blur(8px);
 }
-.hc{
+.hc{opacity:1;transform:none;
   padding:22px 32px;border-left:1px solid rgba(212,168,67,.15);
   text-align:center;
-  opacity:0;transform:translateY(20px);
-  transition:opacity .5s ease, transform .5s ease;
-}
-.hc:last-child{border-left:none;}
+  }
 .hc.on{opacity:1;transform:translateY(0);}
 .hc-num{
   font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
@@ -133,7 +130,6 @@ body{
   text-align:center;
   position:relative;overflow:hidden;
   transition:transform .3s, box-shadow .3s, border-color .3s;
-  opacity:0;transform:translateY(24px);
 }
 .stat-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
@@ -168,7 +164,6 @@ body{
   border-radius:12px;padding:18px 14px;text-align:center;
   cursor:pointer;position:relative;overflow:hidden;
   transition:all .3s ease;
-  opacity:0;transform:scale(.95);
 }
 .issue-tile.on{opacity:1;transform:scale(1);}
 .issue-tile:hover{background:var(--white);border-color:var(--gold);transform:scale(1.03)!important;box-shadow:0 8px 28px var(--shadow);}
@@ -249,11 +244,10 @@ body{
 .tl-card{
   width:44%;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,67,.2);
   border-radius:12px;padding:16px 18px;backdrop-filter:blur(4px);
-  opacity:0;transform:translateX(30px);
-  transition:opacity .5s,transform .5s,border-color .3s,background .3s;
+  transition:border-color .3s,background .3s;
   cursor:default;
 }
-.tl-row.left .tl-card{transform:translateX(-30px);}
+
 .tl-card:hover{background:rgba(255,255,255,.1);border-color:rgba(212,168,67,.45);}
 .tl-card.on{opacity:1;transform:translateX(0)!important;}
 .tl-dot{
@@ -297,8 +291,7 @@ body{
 .feat-card{
   background:var(--white);border:1px solid var(--sand);
   border-radius:14px;padding:26px 20px;
-  opacity:0;transform:translateY(20px);
-  transition:opacity .5s,transform .5s,box-shadow .3s,border-color .3s;
+  transition:box-shadow .3s,border-color .3s;
 }
 .feat-card:hover{box-shadow:0 10px 32px var(--shadow);border-color:var(--gold);}
 .feat-card.on{opacity:1;transform:translateY(0);}
@@ -332,12 +325,12 @@ footer{background:var(--ink);padding:36px 24px;text-align:center;color:rgba(255,
 footer a{color:var(--gold);text-decoration:none;}
 
 /* ─── SCROLL HELPERS ─── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal{transition:opacity .6s ease,transform .6s ease;}
 .reveal.on{opacity:1;transform:translateY(0);}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:600px){
-  .hc{padding:16px 18px;}
+  .hc{opacity:1;transform:none;padding:16px 18px;}
   .tl-track::after{right:16px;}
   .tl-card{width:82%;margin-right:30px;}
   .tl-row.left .tl-card{margin-right:0;margin-left:30px;}
@@ -825,19 +818,26 @@ const io = new IntersectionObserver((entries) => {
   });
 }, {threshold: 0.12});
 
-// Observe all animated elements
-document.querySelectorAll('.hc, .stat-card, .issue-tile, .reveal, .feat-card, .tl-card, .chart-box, .bar-fill').forEach(el => io.observe(el));
+// Observe animated elements for scroll effects
+document.querySelectorAll('.reveal, .tl-card, .chart-box').forEach(el => io.observe(el));
 
-// Also observe hero counters immediately
+// Animate bar fills immediately when page loads (no observer needed)
 setTimeout(() => {
-  document.querySelectorAll('.hc').forEach((el, i) => {
-    setTimeout(() => {
-      el.classList.add('on');
-      const num = el.querySelector('[data-to]');
-      if (num) animateNum(num);
-    }, i * 150);
+  document.querySelectorAll('.bar-fill').forEach((fill, i) => {
+    setTimeout(() => { fill.style.width = fill.dataset.width + '%'; }, i * 50 + 400);
   });
 }, 300);
+
+// Animate hero counters immediately on load
+setTimeout(() => {
+  document.querySelectorAll('.hc [data-to]').forEach((num, i) => {
+    setTimeout(() => animateNum(num), i * 150 + 300);
+  });
+}, 100);
+// Animate all visible stat counters
+document.querySelectorAll('[data-to]').forEach((el, i) => {
+  setTimeout(() => animateNum(el), i * 80 + 500);
+});
 
 // Staggered tile reveal
 document.querySelectorAll('.issue-tile').forEach((tile, i) => {
