@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مجلة تدبر — الإحصاءات الببليومترية | عشر سنوات من العطاء القرآني</title>
 <meta name="description" content="إحصاءات ببليومترية تفاعلية لمجلة تدبر عبر عشرين عدداً من 2016 إلى 2025">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="الإحصاءات الببليومترية — مجلة تدبر">
+<meta property="og:description" content="إحصاءات ببليومترية تفاعلية لمجلة تدبر: 172 إسهاماً، 149 باحثاً، 9000 صفحة عبر 20 عدداً">
+<meta property="og:url" content="https://tadabburmag.sa/bibliometric">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://tadabburmag.sa/bibliometric">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -26,7 +32,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Noto Naskh Arabic',serif;
+  font-family:'Noto Naskh Arabic','Traditional Arabic','Amiri',serif;
   background:var(--parchment);
   color:var(--ink);
   overflow-x:hidden;
@@ -34,7 +40,7 @@ body{
 
 /* ─── GEOMETRIC BACKGROUND PATTERN ─── */
 .geo-bg{
-  position:fixed;inset:0;pointer-events:none;z-index:0;
+  position:absolute;inset:0;pointer-events:none;z-index:0;
   background-image:
     repeating-linear-gradient(45deg,transparent,transparent 34px,rgba(180,130,40,.04) 34px,rgba(180,130,40,.04) 35px),
     repeating-linear-gradient(-45deg,transparent,transparent 34px,rgba(180,130,40,.04) 34px,rgba(180,130,40,.04) 35px);
@@ -42,11 +48,11 @@ body{
 
 /* ─── HERO ─── */
 .hero{
-  position:relative;
+  position:relative;overflow:hidden;
   background:linear-gradient(170deg, var(--bark) 0%, var(--ink) 55%, #0D0804 100%);
-  min-height:100vh;
+  min-height:auto;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:80px 24px 60px;overflow:hidden;
+  text-align:center;padding:80px 24px 70px;overflow:hidden;
 }
 .hero::before{
   content:'';position:absolute;inset:0;
@@ -70,7 +76,7 @@ body{
 @keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 0 0 4px rgba(212,168,67,.15),0 12px 50px rgba(212,168,67,.35);}50%{transform:scale(1.04);box-shadow:0 0 0 10px rgba(212,168,67,.08),0 20px 70px rgba(212,168,67,.5);}}
 
 .hero-title{
-  font-family:'Amiri',serif;
+  font-family:'Amiri','Traditional Arabic',serif;
   font-size:clamp(2rem,5.5vw,3.8rem);
   color:var(--gilt);
   line-height:1.25;margin-bottom:10px;
@@ -106,9 +112,9 @@ body{
 .hc-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:5px;display:block;}
 
 /* ─── SECTION WRAPPER ─── */
-.wrap{max-width:1080px;margin:0 auto;padding:72px 24px;}
+.wrap{max-width:1080px;margin:0 auto;padding:60px 24px;}
 .sec-head{text-align:center;margin-bottom:52px;}
-.sec-head h2{font-family:'Amiri',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);color:var(--bark);margin-bottom:6px;}
+.sec-head h2{font-family:'Amiri','Traditional Arabic',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);color:var(--bark);margin-bottom:6px;}
 .sec-head h2 em{font-style:normal;color:var(--amber);}
 .sec-head p{font-size:.9rem;color:#5C4020;margin-top:4px;}
 .ornament-line{
@@ -151,56 +157,97 @@ body{
 .sc-label{font-size:.82rem;color:var(--amber);font-weight:700;margin-bottom:4px;}
 .sc-desc{font-size:.74rem;color:#7A5830;line-height:1.6;}
 
-/* ─── PER-ISSUE TABLE ─── */
+/* ─── ISSUES EXPLORER — RICH CARDS ─── */
 .issues-section{background:var(--white);padding:72px 0;}
 .issues-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:12px;margin-top:0;
+  grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+  gap:16px;
 }
-.issue-tile{
+.issue-card{
   background:var(--parchment);
   border:1px solid var(--sand);
-  border-radius:12px;padding:18px 14px;text-align:center;
-  cursor:pointer;position:relative;overflow:hidden;
-  transition:all .3s ease;
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+  position:relative;
 }
-.issue-tile.on{opacity:1;transform:scale(1);}
-.issue-tile:hover{background:var(--white);border-color:var(--gold);transform:scale(1.03)!important;box-shadow:0 8px 28px var(--shadow);}
-.issue-tile.active{
-  background:linear-gradient(135deg,var(--bark),var(--amber));
-  border-color:transparent;color:white;
+.issue-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 40px var(--shadow);
+  border-color:var(--gold);
 }
-.it-num{
-  font-family:'Amiri',serif;font-size:1.3rem;color:var(--amber);
-  display:block;margin-bottom:4px;font-weight:700;
+.issue-card.active{
+  border-color:var(--amber);
+  box-shadow:0 0 0 3px rgba(184,133,42,.25);
 }
-.issue-tile.active .it-num{color:var(--gilt);}
-.it-label{font-size:.78rem;color:var(--bark);}
-.issue-tile.active .it-label{color:rgba(255,255,255,.8);}
-.it-count{
-  font-size:1.6rem;font-weight:700;color:var(--ink);
-  display:block;margin-top:6px;
+.ic-cover{
+  width:100%;aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+  background:var(--vellum);
 }
-.issue-tile.active .it-count{color:white;}
-.it-year{font-size:.65rem;color:#9A7040;margin-top:2px;display:block;}
-.issue-tile.active .it-year{color:rgba(255,255,255,.6);}
+.ic-cover-placeholder{
+  width:100%;aspect-ratio:3/4;
+  background:linear-gradient(160deg,var(--vellum),var(--sand));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Amiri',serif;font-size:1.1rem;
+  color:var(--amber);text-align:center;padding:12px;
+}
+.ic-body{padding:12px 10px 14px;}
+.ic-num{
+  font-size:.68rem;font-weight:700;color:var(--amber);
+  letter-spacing:.04em;display:block;margin-bottom:2px;
+}
+.ic-name{
+  font-family:'Amiri',serif;font-size:.9rem;color:var(--bark);
+  display:block;margin-bottom:4px;line-height:1.3;
+}
+.ic-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:6px;
+}
+.ic-year{font-size:.65rem;color:#9A7040;}
+.ic-arts{
+  font-size:.65rem;font-weight:700;
+  background:var(--amber);color:white;
+  padding:2px 7px;border-radius:20px;
+}
 
 /* Issue detail panel */
 .issue-detail{
-  background:linear-gradient(135deg,var(--bark) 0%, #2A1606 100%);
-  border-radius:16px;padding:32px 28px;margin-top:24px;
-  display:none;color:white;
+  background:linear-gradient(135deg,var(--bark),#1A0A02);
+  border-radius:16px;padding:28px;margin-top:20px;
+  color:white;display:none;
 }
-.issue-detail.show{display:block;animation:fadeSlide .4s ease;}
-@keyframes fadeSlide{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
-.id-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px;}
-.id-title{font-family:'Amiri',serif;font-size:1.5rem;color:var(--gilt);}
-.id-date{font-size:.8rem;color:rgba(255,255,255,.5);}
-.id-stats{display:flex;flex-wrap:wrap;gap:16px;}
-.id-stat{background:rgba(255,255,255,.07);border-radius:10px;padding:14px 20px;text-align:center;flex:1;min-width:100px;}
-.id-stat strong{display:block;font-size:1.6rem;color:var(--gold);}
-.id-stat span{font-size:.72rem;color:rgba(255,255,255,.55);}
+.issue-detail.show{display:block;animation:slideIn .35s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.id-layout{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
+.id-cover-wrap{flex-shrink:0;}
+.id-cover{
+  width:90px;border-radius:8px;
+  box-shadow:0 6px 24px rgba(0,0,0,.4);
+  display:block;
+}
+.id-info{flex:1;min-width:200px;}
+.id-title{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gilt);margin-bottom:4px;}
+.id-hijri{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.id-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.id-stat{
+  background:rgba(255,255,255,.07);border-radius:10px;
+  padding:12px 16px;text-align:center;min-width:90px;
+}
+.id-stat strong{display:block;font-size:1.5rem;color:var(--gold);line-height:1;}
+.id-stat span{font-size:.68rem;color:rgba(255,255,255,.5);margin-top:3px;display:block;}
+.id-link{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  color:var(--ink);padding:9px 20px;border-radius:99px;
+  font-size:.82rem;font-weight:700;text-decoration:none;
+  transition:opacity .2s;
+}
+.id-link:hover{opacity:.85;}
 
 /* ─── SVG CHARTS ─── */
 .chart-section{background:var(--vellum);}
@@ -258,7 +305,7 @@ body{
   border:2px solid var(--ink);box-shadow:0 0 10px rgba(212,168,67,.5);
 }
 .tl-year{font-size:.68rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:3px;}
-.tl-head{font-family:'Amiri',serif;font-size:.98rem;color:var(--white);margin-bottom:3px;}
+.tl-head{font-family:'Amiri','Traditional Arabic',serif;font-size:.98rem;color:var(--white);margin-bottom:3px;}
 .tl-body{font-size:.73rem;color:rgba(255,255,255,.5);line-height:1.6;}
 
 /* ─── COUNTRY MAP VISUAL ─── */
@@ -276,7 +323,7 @@ body{
   color:rgba(255,255,255,.04);top:-80px;left:30px;line-height:1;
 }
 .q-text{
-  font-family:'Amiri',serif;
+  font-family:'Amiri','Traditional Arabic',serif;
   font-size:clamp(1.2rem,3vw,1.9rem);
   color:var(--white);max-width:680px;margin:0 auto 18px;line-height:1.9;
   position:relative;
@@ -309,10 +356,10 @@ body{
 .fc-desc{font-size:.74rem;color:#7A5830;line-height:1.65;}
 
 /* ─── CTA ─── */
-.cta-section{background:var(--vellum);padding:72px 24px;text-align:center;}
+.cta-section{background:var(--vellum);padding:60px 24px;text-align:center;}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px;}
 .btn{
-  padding:13px 30px;border-radius:99px;font-family:'Noto Naskh Arabic',serif;
+  padding:13px 30px;border-radius:99px;font-family:'Noto Naskh Arabic','Traditional Arabic','Amiri',serif;
   font-size:.88rem;font-weight:700;cursor:pointer;
   text-decoration:none;display:inline-flex;align-items:center;gap:8px;
   transition:all .3s ease;
@@ -349,7 +396,11 @@ footer a{color:var(--gold);text-decoration:none;}
   <div class="corner tl" aria-hidden="true">٭</div>
   <div class="corner br" aria-hidden="true">٭</div>
 
-  <div class="hero-emblem" role="img" aria-label="شعار مجلة تدبر">
+  <a href="https://tadabburmag.sa" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.45);font-size:.78rem;text-decoration:none;margin-bottom:24px;border:1px solid rgba(255,255,255,.12);padding:5px 14px;border-radius:99px;transition:all .2s;" onmouseover="this.style.color='rgba(255,255,255,.8)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  العودة إلى مجلة تدبر
+</a>
+<div class="hero-emblem" role="img" aria-label="شعار مجلة تدبر">
     <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M27 6 L27 48 M6 27 L48 27 M10 10 L44 44 M44 10 L10 44" stroke="#3A220A" stroke-width="2" stroke-linecap="round"/>
       <circle cx="27" cy="27" r="14" stroke="#3A220A" stroke-width="1.5" fill="none"/>
@@ -470,11 +521,10 @@ footer a{color:var(--gold);text-decoration:none;}
     <div class="sec-head">
       <h2 id="issues-heading">مستكشِف <em>الأعداد العشرين</em></h2>
       <div class="ornament-line" aria-hidden="true"></div>
-      <p>انقر على أي عدد لعرض تفاصيله الببليومترية</p>
+      <p>بيانات حقيقية مستخرجة من أرشيف الموقع — انقر على أي عدد لعرض تفاصيله</p>
     </div>
-
-    <div class="issues-grid" id="issuesGrid" role="list"></div>
-    <div class="issue-detail" id="issueDetail" role="region" aria-live="polite" aria-label="تفاصيل العدد"></div>
+    <div class="issues-grid" id="issuesGrid" role="list" aria-label="قائمة أعداد مجلة تدبر"></div>
+    <div class="issue-detail" id="issueDetail" role="region" aria-live="polite" aria-label="تفاصيل العدد المختار"></div>
   </div>
 </section>
 
@@ -630,7 +680,7 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- ═══════════════ CTA ═══════════════ -->
 <section class="cta-section" aria-labelledby="cta-heading">
-  <h2 class="reveal" id="cta-heading" style="font-family:'Amiri',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--bark);">انضم إلى رحلة <em style="font-style:normal;color:var(--amber);">التدبر</em></h2>
+  <h2 class="reveal" id="cta-heading" style="font-family:'Amiri','Traditional Arabic',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--bark);">انضم إلى رحلة <em style="font-style:normal;color:var(--amber);">التدبر</em></h2>
   <div style="width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto;" aria-hidden="true"></div>
   <p class="reveal" style="color:#5C4020;font-size:.9rem;margin-top:8px;">خبرات طيبة للبحوث والدراسات — مكتب متخصص في الدراسات القرآنية</p>
   <div class="btn-row reveal">
@@ -655,33 +705,33 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <footer>
   <p>مجلة تدبر القرآنية المتكاملة &mdash; مكتب خبرات طيبة للبحوث والدراسات</p>
-  <p style="margin-top:8px"><a href="https://tadabburmag.sa" target="_blank" rel="noopener noreferrer">www.tadabburmag.sa</a> &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#30595e565f7044515451525245425d51571e4351"><span class="__cf_email__" data-cfemail="d6bfb8b0b996a2b7b2b7b4b4a3a4bbb7b1f8a5b7">[email&#160;protected]</span></a></p>
+  <p style="margin-top:8px"><a href="https://tadabburmag.sa">www.tadabburmag.sa</a> &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#6801060e07281c090c090a0a1d1a05090f461b09"><span class="__cf_email__" data-cfemail="7e171018113e0a1f1a1f1c1c0b0c131f19500d1f">[email&#160;protected]</span></a></p>
   <p style="margin-top:10px;font-size:.68rem">جميع الأبحاث منشورة تحت رخصة Creative Commons CC-BY 4.0</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══════ DATA ═══════
 const ISSUES = [
-  {num:'الأول',    year:'2016', hijri:'محرم ١٤٣٨',   articles:4, reports:4, total:10, pages:'~376', researchers:10},
-  {num:'الثاني',   year:'2017', hijri:'رجب ١٤٣٨',    articles:4, reports:4, total:9,  pages:'~304', researchers:9},
-  {num:'الثالث',   year:'2017', hijri:'محرم ١٤٣٩',   articles:4, reports:5, total:10, pages:'~430', researchers:11},
-  {num:'الرابع',   year:'2018', hijri:'رجب ١٤٣٩',    articles:4, reports:3, total:8,  pages:'~350', researchers:9},
-  {num:'الخامس',   year:'2018', hijri:'محرم ١٤٤٠',   articles:5, reports:3, total:10, pages:'~320', researchers:10},
-  {num:'السادس',   year:'2019', hijri:'رجب ١٤٤٠',    articles:5, reports:4, total:10, pages:'~300', researchers:10},
-  {num:'السابع',   year:'2019', hijri:'محرم ١٤٤١',   articles:4, reports:4, total:9,  pages:'~290', researchers:9},
-  {num:'الثامن',   year:'2020', hijri:'رجب ١٤٤١',    articles:4, reports:3, total:8,  pages:'~280', researchers:8},
-  {num:'التاسع',   year:'2020', hijri:'محرم ١٤٤٢',   articles:5, reports:4, total:10, pages:'~310', researchers:10},
-  {num:'العاشر',   year:'2021', hijri:'رجب ١٤٤٢',    articles:6, reports:4, total:11, pages:'~330', researchers:12},
-  {num:'الحادي عشر',year:'2021',hijri:'محرم ١٤٤٣',   articles:6, reports:4, total:11, pages:'~340', researchers:11},
-  {num:'الثاني عشر',year:'2022',hijri:'رجب ١٤٤٣',    articles:10,reports:3, total:14, pages:'~400', researchers:15},
-  {num:'الثالث عشر',year:'2022',hijri:'محرم ١٤٤٤',   articles:5, reports:3, total:9,  pages:'~280', researchers:9},
-  {num:'الرابع عشر',year:'2023',hijri:'رجب ١٤٤٤',    articles:4, reports:3, total:8,  pages:'~260', researchers:8},
-  {num:'الخامس عشر',year:'2023',hijri:'محرم ١٤٤٥',   articles:4, reports:3, total:8,  pages:'~250', researchers:8},
-  {num:'السادس عشر',year:'2024',hijri:'رجب ١٤٤٥',    articles:6, reports:4, total:11, pages:'~320', researchers:11},
-  {num:'السابع عشر',year:'2024',hijri:'محرم ١٤٤٦',   articles:6, reports:4, total:11, pages:'~330', researchers:11},
-  {num:'الثامن عشر',year:'2025',hijri:'رجب ١٤٤٦',    articles:7, reports:4, total:12, pages:'~350', researchers:12},
-  {num:'التاسع عشر',year:'2025',hijri:'محرم ١٤٤٧',   articles:11,reports:5, total:18, pages:'~480', researchers:19},
-  {num:'العشرون',  year:'2026', hijri:'رجب ١٤٤٧',    articles:7, reports:4, total:12, pages:'~340', researchers:12},
+  {num:1,  nameAr:'العدد الأول',        hijri:'المحرم ١٤٣٨هـ', year:2016, vol:1,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/4',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_4_ar.jpg'},
+  {num:2,  nameAr:'العدد الثاني',       hijri:'رجب ١٤٣٨هـ',    year:2017, vol:1,  articles:7,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/5',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_5_ar.jpg'},
+  {num:3,  nameAr:'العدد الثالث',       hijri:'محرم ١٤٣٩هـ',   year:2017, vol:2,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/23', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_23_ar.jpg'},
+  {num:4,  nameAr:'العدد الرابع',       hijri:'رجب ١٤٣٩هـ',    year:2018, vol:2,  articles:7,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/22', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_22_ar.jpg'},
+  {num:5,  nameAr:'العدد الخامس',       hijri:'محرم ١٤٤٠هـ',   year:2018, vol:3,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/19', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_19_ar.jpg'},
+  {num:6,  nameAr:'العدد السادس',       hijri:'رجب ١٤٤٠هـ',    year:2019, vol:3,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/18', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_18_ar.jpg'},
+  {num:7,  nameAr:'العدد السابع',       hijri:'محرم ١٤٤١هـ',   year:2019, vol:4,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/17', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_17_ar.jpg'},
+  {num:8,  nameAr:'العدد الثامن',       hijri:'رجب ١٤٤١هـ',    year:2020, vol:4,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/16', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_16_ar.jpg'},
+  {num:9,  nameAr:'العدد التاسع',       hijri:'محرم ١٤٤٢هـ',   year:2020, vol:5,  articles:9,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/13', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_13_ar.jpg'},
+  {num:10, nameAr:'العدد العاشر',       hijri:'رجب ١٤٤٢هـ',    year:2021, vol:5,  articles:9,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/12', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_12_ar.jpg'},
+  {num:11, nameAr:'العدد الحادي عشر',  hijri:'محرم ١٤٤٣هـ',   year:2021, vol:6,  articles:9,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/11', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_11_ar.jpg'},
+  {num:12, nameAr:'العدد الثاني عشر',  hijri:'رجب ١٤٤٣هـ',    year:2022, vol:6,  articles:13, url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/10', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_10_ar.jpg'},
+  {num:13, nameAr:'العدد الثالث عشر',  hijri:'محرم ١٤٤٤هـ',   year:2022, vol:7,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/9',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_9_ar.jpg'},
+  {num:14, nameAr:'العدد الرابع عشر',  hijri:'رجب ١٤٤٤هـ',    year:2023, vol:7,  articles:7,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/7',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_7_ar.jpg'},
+  {num:15, nameAr:'العدد الخامس عشر',  hijri:'محرم ١٤٤٥هـ',   year:2023, vol:8,  articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/2',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_2_ar.jpg'},
+  {num:16, nameAr:'العدد السادس عشر',  hijri:'رجب ١٤٤٥هـ',    year:2024, vol:8,  articles:10, url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/3',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_3_ar.jpg'},
+  {num:17, nameAr:'العدد السابع عشر',  hijri:'محرم ١٤٤٦هـ',   year:2024, vol:9,  articles:10, url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/8',  cover:'https://tadabburmag.sa/public/journals/1/cover_issue_8_ar.jpg'},
+  {num:18, nameAr:'العدد الثامن عشر',  hijri:'رجب ١٤٤٦هـ',    year:2025, vol:9,  articles:10, url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/21', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_21_ar.jpg'},
+  {num:19, nameAr:'العدد التاسع عشر',  hijri:'محرم ١٤٤٧هـ',   year:2025, vol:10, articles:8,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/25', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_25_ar.jpg'},
+  {num:20, nameAr:'العدد العشرون',      hijri:'رجب ١٤٤٧هـ',    year:2026, vol:10, articles:9,  url:'https://tadabburmag.sa/tadabburmag/ar/issue/view/29', cover:'https://tadabburmag.sa/public/journals/1/cover_issue_29_ar.jpg'},
 ];
 
 const COUNTRIES = [
@@ -736,29 +786,70 @@ function animateNum(el) {
   }, 16);
 }
 
-// ═══════ BUILD ISSUES GRID ═══════
+// ═══════ BUILD ISSUES GRID — RICH CARDS ═══════
 const grid = document.getElementById('issuesGrid');
 const detail = document.getElementById('issueDetail');
 let activeIdx = -1;
+
 ISSUES.forEach((iss, i) => {
-  const tile = document.createElement('div');
-  tile.className = 'issue-tile';
-  tile.setAttribute('role','listitem');
-  tile.setAttribute('tabindex','0');
-  tile.setAttribute('aria-label',`العدد ${iss.num} — ${iss.hijri} — ${iss.total} إسهاماً`);
-  tile.innerHTML = `
-    <span class="it-num">${i+1}</span>
-    <span class="it-label">${iss.num}</span>
-    <span class="it-count">${iss.total}</span>
-    <span class="it-year">${iss.hijri}</span>`;
-  tile.addEventListener('click', () => openIssue(i, tile));
-  tile.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') openIssue(i,tile); });
-  grid.appendChild(tile);
+  const card = document.createElement('div');
+  card.className = 'issue-card';
+  card.setAttribute('role','listitem');
+  card.setAttribute('tabindex','0');
+  card.setAttribute('aria-label', iss.nameAr + ' — ' + iss.hijri + ' — ' + iss.articles + ' إسهاماً');
+  card.innerHTML = `
+    <img class="ic-cover" src="${iss.cover}"
+      alt="غلاف ${iss.nameAr}"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      loading="lazy">
+    <div class="ic-cover-placeholder" style="display:none" aria-hidden="true">${iss.nameAr}</div>
+    <div class="ic-body">
+      <span class="ic-num">م${iss.vol} ع${iss.num}</span>
+      <span class="ic-name">${iss.nameAr}</span>
+      <div class="ic-meta">
+        <span class="ic-year">${iss.hijri}</span>
+        <span class="ic-arts">${iss.articles} إسهام</span>
+      </div>
+    </div>`;
+  card.addEventListener('click', () => openIssue(i, card));
+  card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openIssue(i,card);} });
+  grid.appendChild(card);
 });
 
-function openIssue(i, tile) {
-  document.querySelectorAll('.issue-tile').forEach(t => t.classList.remove('active'));
-  if (activeIdx === i) { detail.classList.remove('show'); activeIdx = -1; return; }
+function openIssue(i, card) {
+  document.querySelectorAll('.issue-card').forEach(c => c.classList.remove('active'));
+  if (activeIdx === i) {
+    detail.classList.remove('show');
+    activeIdx = -1;
+    return;
+  }
+  card.classList.add('active');
+  activeIdx = i;
+  const d = ISSUES[i];
+  detail.innerHTML = `
+    <div class="id-layout">
+      <div class="id-cover-wrap">
+        <img class="id-cover" src="${d.cover}" alt="غلاف ${d.nameAr}"
+          onerror="this.style.display='none'">
+      </div>
+      <div class="id-info">
+        <div class="id-title">${d.nameAr}</div>
+        <div class="id-hijri">${d.hijri} — ${d.year}م | مجلد ${d.vol}</div>
+        <div class="id-stats">
+          <div class="id-stat"><strong>${d.articles}</strong><span>إسهاماً</span></div>
+          <div class="id-stat"><strong>${d.vol}</strong><span>المجلد</span></div>
+          <div class="id-stat"><strong>${d.num}</strong><span>رقم العدد</span></div>
+          <div class="id-stat"><strong>${d.year}</strong><span>سنة النشر</span></div>
+        </div>
+        <a class="id-link" href="${d.url}" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          قراءة العدد على الموقع
+        </a>
+      </div>
+    </div>`;
+  detail.classList.add('show');
+  setTimeout(() => detail.scrollIntoView({behavior:'smooth',block:'nearest'}), 50);
+}
   tile.classList.add('active');
   activeIdx = i;
   const d = ISSUES[i];
@@ -873,12 +964,4 @@ setTimeout(() => {
 }, 100);
 // Animate all visible stat counters
 document.querySelectorAll('[data-to]').forEach((el, i) => {
-  setTimeout(() => animateNum(el), i * 80 + 500);
-});
-
-// Staggered tile reveal
-document.querySelectorAll('.issue-tile').forEach((tile, i) => {
-  tile.style.transitionDelay = (i * 0.04) + 's';
-});
-document.querySelectorAll('.stat-card').forEach((card, i) => {
-  card.style.transitio
+  setTimeout(() => animateNum(el), i * 
